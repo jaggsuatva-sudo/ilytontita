@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>100 Cosas Que Me Gustan de Ti 💕</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper-bg: #fbefe8;
+      --title-red: #9b1f2b;
+      --text-black: #1b1b1b;
+      --page-width: 680px;
+      --page-height: 520px;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(180deg, #fffaf8, #fffdfc);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .music-player-fixed {
+      width: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      background: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+      margin-top: 20px;
+      z-index: 999;
+      position: sticky;
+      top: 10px;
+    }
+
+    .music-cover {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    audio {
+      width: 250px;
+      height: 35px;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .login-container, .diario-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      max-width: var(--page-width);
+    }
+
+    .login-container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 6px 26px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+      font-size: 18px;
+      width: 220px;
+    }
+
+    button {
+      background-color: #ffb6c1;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.2s;
+    }
+    button:hover { background-color:#ff9bb0; }
+
+    .page {
+      position: relative;
+      width: var(--page-width);
+      height: var(--page-height);
+      background: var(--paper-bg);
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      padding: 40px 48px;
+      box-sizing: border-box;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .titulo {
+      font-family: 'Great Vibes', cursive;
+      font-size: 46px;
+      color: var(--title-red);
+      margin: 0 0 12px 0;
+      line-height: 1;
+      position: relative;
+      z-index: 3;
+    }
+
+    .texto {
+      color: var(--text-black);
+      font-size: 18px;
+      line-height: 1.6;
+      white-space: pre-line;
+      text-align: left;
+      width: 100%;
+      max-width: 90%;
+      position: relative;
+      z-index: 3;
+    }
+
+    .subtitulo {
+      color: var(--title-red);
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin-bottom:8px;
+      font-weight:600;
+      position: relative;
+      z-index: 3;
+    }
+
+    .nombres {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      width:100%;
+      font-size:22px;
+      font-weight:bold;
+      margin-top:8px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .corazon {
+      font-size:48px;
+      color:var(--title-red);
+      cursor: pointer;
+      transition: transform .2s ease;
+    }
+    .corazon:hover { transform: scale(1.15); }
+
+    .flechas {
+      display:flex;
+      justify-content:space-between;
+      width:100%;
+      margin-top:18px;
+      gap:20px;
+    }
+    .flecha {
+      width:56px;
+      height:38px;
+      border-radius:24px;
+      background:transparent;
+      border:2px solid var(--title-red);
+      color:var(--title-red);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:20px;
+      user-select:none;
+      transition: all .15s ease;
+    }
+    .flecha:hover {
+      background:var(--title-red);
+      color:var(--paper-bg);
+    }
+
+    .decor-img {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 18px;
+      z-index: 1;
+    }
+
+    .top-left { top: 10px; left: 10px; }
+    .top-right { top: 10px; right: 10px; }
+    .bottom-left { bottom: 10px; left: 10px; }
+    .bottom-right { bottom: 10px; right: 10px; }
+
+    @media (max-width:760px){
+      :root{ --page-width:92vw; --page-height:62vh; }
+      .page{ padding:28px; }
+      .titulo{ font-size:36px; }
+      .texto{ font-size:16px; }
+      .music-player-fixed{ width:92vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="music-player-fixed">
+    <img src="imagenes/lil.avif" alt="Portada" class="music-cover">
+    <audio id="player" controls autoplay loop>
+      <source src="musica/LilPeep.mp3" type="audio/mpeg">
+      Tu navegador no soporta la reproducción de audio.
+    </audio>
+  </div>
+
+  <div class="app">
+    <div class="login-container" id="login">
+      <h2>Ingresa la contraseña</h2>
+      <p>Pista: Nombre de nuestro mundito de cubitos</p>
+      <input type="password" id="password" placeholder="Contraseña" />
+      <div style="display:flex;gap:12px; margin-top:12px; align-items:center; justify-content:center;">
+        <button onclick="verificarPassword()">Entrar</button>
+      </div>
+    </div>
+
+    <div class="diario-wrapper" id="diario" style="display:none; align-items:center;">
+      <div id="page-container"></div>
+
+      <div class="flechas" style="max-width:var(--page-width);">
+        <div class="flecha" onclick="anteriorPagina()">⟵</div>
+        <div class="flecha" onclick="siguientePagina()">⟶</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const paginas = [/* 👇 aquí va todo tu texto completo */ 
+      "3 cosas que me gustan de ti ♥️",
+      "1. Tus ojos",
+      "2. Tu voz",
+      "JAJAJAJA, enserio crees que solo dire 3?",
+      "100 Cosas Que Me Gustan de Ti",
+      "Querida Ariaanaaahz una vez te dije que te diría 100 cosas que me gustan de ti, me puse a pensar y era obvio que no iba a tener sentido colocar solo las 100 cosas sin colocar el porqué ya que siempre me lo preguntas, igual y fue dificil porque la verdad no es lo mismo para mí que yo responda por mi cuenta, a lo que me refiero es que me expreso mejor cuando tu me haces la pregunta del porqué de las cosas, perdona la demora y perdóname porque después de tiempo te hago algo bonito o bueno un detalle, y tiene su razón obvio es porque sé que no estoy obligado, pero mi mente y mi corazón siempre quieren ver la manera de darte o hacerte algo para demostrarte lo mucho que te quiero y ahí es cuando quiero hacerte algo especial pero no se me viene nada a la mente y me quedo así, en un bucle en el que me cuestiono que regalo puedo hacer para esa chica tan única, en si quiero hacerte un regalo que grite soy el chico más afortunado de mundoooooo diosss.\nBueno Empecemos...",
+      "1. Tus ojos\nPorque desde la primera vez que los vi quedé fascinado con lo hermosos que eran, fue la misma sensación que siento cuando me quedo a ver los atardeceres.",
+      "2. Tu cabello\nNo he tenido la fortuna de poder tocar tu cabello, pero sí la fortuna de haberlo visto en fotos y solo me imagino acariciarlo mientras te hago reír.",
+      "3. Tu inteligencia\nMe encanta cómo analizas todo hasta el mínimo detalle, incluso cuando estás molesta y pues eres una chica muy intelectual.",
+      "4. Tu forma de ser\nEres imperfectamente perfecta, eso te hace única y me encanta.",
+      "5. Tu honestidad\nPorque no finges y eso para mí vale más que cualquier perfección.",
+      "6. Tu voz\nSe volvió mi sonido favorito.",
+      "7. Me haces sentir importante\nA pesar de la distancia que nos separa me haces sentir que soy parte de tu mundo.",
+      "8. Tu risa\nPorque cuando te ríes de verdad, no hay sonido más bonito, y bueno, es contagiosa y me encanta.",
+      "9. Tus lunares\nComo constelaciones que yo quiero descubrir.",
+      "10. Tus cachetitos\nPorque imagino que cuando sonríes se vuelven imposibles de no notar.",
+      "11. Tu amor\nAunque no lo digas siempre, se siente en cada palabra.",
+      "12. Tus abrazos\nAunque aún no los reciba, los imagino cada vez que me dices que me quieres dar un abrazo y de alguna forma me siento tranquilo.",
+      "13. Tus besos\nPorque los imagino siempre cada vez que te pido que me los mandes y me muero de ganas de darte un beso.",
+      "14. Tu lealtad\nPorque incluso sin promesas, siempre estás ahí y yo valoro mucho eso.",
+      "15. Lo linda que eres con mi familia\nAunque solo los mencione, siempre muestras interés.",
+      "16. Tu comprensión\nPorque a veces ni yo me entiendo, pero tú sí, y eso me hace sentir que me conoces más de lo que yo a mí mismo.",
+      "17. Tu carácter\nPorque aunque solo te enojes, me encanta verte tan auténtica y única.",
+      "18. Lo sensible que eres\nSi eres mayor que yo, pero hay momentos en los que te conviertes en bebé Ari gordita.",
+      "19. Tus corajes\nPorque detrás de ellos está alguien que siente de verdad.",
+      "20. Tu sentido del humor\nSiempre logras hacerme reír, incluso sin intentarlo.",
+      "21. Tu pasión por hacer las cosas\nPorque cuando te enfocas, nadie te detiene.",
+      "22. Tu compañía por ir conmigo\nMe encanta que cuando estoy haciendo tarea o salgo, pues me acompañes y siento tu presencia siempre que lo haces.",
+      "23. Tu seguridad\nEs firme pero suave, como si nada ni nadie pudiera romperte.",
+      "24. Tu desinterés\nPorque haces las cosas sin esperar nada a cambio.",
+      "25. Tus regaños\nPorque me haces sentir que en realidad te importa y me gusta.",
+      "26. Lo posesiva que eres\nPorque demuestras que de alguna forma me consideras tuyo, y sí, soy tuyo.",
+      "27. Tu comedia\nPorque contigo no hay día aburrido y amo hacer cualquier cosa contigo.",
+      "28. Tu piel\nQue imagino tan suave como tus palabras cuando te abres conmigo.",
+      "29. Tu alegría\nQue a veces es mi mejor medicina, o sea mi droga.",
+      "30. Tu actitud\nMe demuestra quién eres en verdad.",
+      "31. Lo fuerte que eres\nIncluso cuando todo te pesa.",
+      "32. Lo intensa\nMe gusta y me encanta porque en cada acción se demuestra tu ternura.",
+      "33. Tu perspectiva de todo\nPorque siempre me haces ver las cosas distinto.",
+      "34. Tu amor por las fotos\nEsta va más a que cuando me las mandas me haces sentir parte de tus momentos.",
+      "35. Tu amor por los animales\nPorque muestra tu corazón tierno.",
+      "36. Tu belleza\nQue va mucho más allá de lo físico.",
+      "37. Tu apoyo\nPorque siempre tienes las palabras exactas cuando más las necesito, y bueno, ya lo dije, siempre estás ahí.",
+      "38. Tu sencillez\nPorque no te hace falta nada para brillar.",
+      "39. Tu cuerpo\nAunque no lo haya tocado, lo admiro con respeto y deseo.",
+      "40. Tu cariño\nPorque sabes demostrarlo sin decirlo.",
+      "41. Lo maravillosa que eres\nSimplemente lo eres.",
+      "42. Lo asombrosa que eres\nCada día descubro algo nuevo de ti y lo más hermoso es que cada día encuentro más razones para enamorarme de ti.",
+      "43. Tu amistad\nAntes que todo, eres mi mejor compañera.",
+      "44. Tu voz cuando estás seria\nPorque incluso enojada tu voz es igual de melodiosa.",
+      "45. Tu confianza\nPorque me dejas entrar a partes de ti que otros no conocen.",
+      "46. Tus consejos\nSiempre sabes qué decir.",
+      "47. Tus anécdotas\nEn cada historia que me cuentas te conozco más.",
+      "48. Tu energía por hacer las cosas\nIncluso cuando estás cansada.",
+      "49. Me conoces como nadie me había conocido\nPorque me lees sin que te diga nada.",
+      "50. Cómo me cuidas\nPorque te preocupas por cada tontería que me pasa.",
+      "51. Tus brazos\nSi los usas para abrazarme, me los imagino como el lugar más seguro del mundo.",
+      "52. Tu encanto\nTienes algo que simplemente atrae.",
+      "53. Tu amor por las mascotas\nMuestra tu nobleza.",
+      "54. Tu enorme corazón\nQue no todos saben valorar.",
+      "55. Tu atención\nPorque siempre notas algo, siempre hasta el más mínimo detalle.",
+      "56. Tu compañía\nPorque aunque no te vea, se siente real.",
+      "57. Tu calma\nCuando decides quedarte y no irte.",
+      "58. La forma en la que me hablas\nPorque me haces sentir especial sin esfuerzo.",
+      "59. Tu nariz\nPorque hasta los detalles más pequeños me parecen perfectos en vos.",
+      "60. Tu manera de escucharme\nIncluso cuando hablo puras weas, siempre me escuchas y me prestas atención.",
+      "61. Tu delicadeza\nA veces se esconde tras tu carácter fuerte.",
+      "62. No me juzgas\nEso me hace confiar plenamente.",
+      "63. Tus cumplidos\nNo estoy acostumbrado a eso, pero cuando lo haces pues… haces que me convierta en un niño de nuevo.",
+      "64. Todo para mí\n porque sin quererlo, te volviste eso: todo lo que no sabía que necesitaba.",
+      "65. Tu mirada\nPorque resalta lo hermoso que son tus ojos",
+      "66. Tu creatividad\nPorque encuentras la forma distinta y hermosa de hacer las cosas",
+      "67. Lo detallista\nSiempre te acuerdas de las cosas",
+      "68. Tu orgullo\nMe encanta porque habla y demuestra cuanto te valoras",
+      "69. Lo dramática\nPorque a veces si exageras pero me encanta y amo, te ves tan tierna que solo me dan ganas de abrazarte.",
+      "70. Tu amor por los libros\nPorque habla de lo curiosa y soñadora que eres, alguien que encuentra mundos enteros entre páginas.",
+      "71. Tu amor por la F1\nEl porque de esta la descubriré cuando me vea como te emocionas en cada carrera",
+      "72. Tu estilo\nPorque todo lo que usas te queda perfecto, y no es la ropa… eres tú quien hace que todo se vea increíble.",
+      "73. Tu amor por la música\nPorque cada canción que te gusta dice un poquito de lo que sientes, y me gustaría conocer tu playlist",
+      "74. Lo mucho que te gustan las series\nPorque me encanta cómo te emocionas con cada capítulo, y me gustaría que veamos una juntos",
+      "75. Tu espontaneidad\nPorque siempre logras sorprenderme, incluso en los momentos más simples.",
+      "76. Tus silencios cómodos\nPorque incluso sin hablar, siento que estamos bien, aunque no siempre pienso eso",
+      "77. Tu forma de contar tus días\nAl contarme me haces sentir parte de tu vida y me gusta saber que es lo que hiciste",
+      "78. Tu manera de cuidarte\nPorque demuestra lo mucho que te valoras",
+      "79. Tus ocurrencias de madrugada\nPorque esas conversaciones a esas horas son mis favoritas",
+      "80. Tu paciencia conmigo\nPorque a veces no soy fácil, y aun así no te vas.",
+      "81. Tu curiosidad por conocerme más\nPorque siempre preguntas cosas que nadie más se interesó en saber.",
+      "82. Tu forma de bromear cuando estoy serio\nPorque sabes romper mis muros con solo una palabra.",
+      "83. Tu forma de confiar en mí\nPorque me das un lugar que nunca había sentido tener con alguien.",
+      "84. Tu forma de quedarte, incluso cuando no te lo pido\nPorque eso demuestra que no solo estás, sino que quieres estar.",
+      "85. La manera en que hablas de tus planes\nPorque al escucharte, me imagino ahí, acompañándote.",
+      "86. Tu forma de consolarme\nAunque no puedas abrazarme, tus palabras siempre lo hacen.",
+      "87. Tus mensajes\nEs lo que más me gusta y lo que espero ver cuando agarro el cell",
+      "88. Tus recuerdos compartidos\nPorque cada historia tuya la siento como si la hubiera vivido contigo",
+      "89. Tu forma de despedirte cuando estás molesta\nPorque incluso enojada, no puedes evitar ser tierna.",
+      "90. Tu forma de preocuparte por mis tonterías\nPorque nadie más lo hace como tú.",
+      "91. Tu forma de ilusionarme con tan poco\nPorque bastaba una palabra tuya para alegrarme el día",
+      "92. Tu forma de decir mi nombre cuando estás seria\nPorque suena distinto, pero igual de bonito.",
+      "93. Tu forma de aparecer en mis pensamientos sin aviso\nPorque no necesito buscarte, simplemente estás.",
+      "94. Tu forma de quedarte en mi mente\nPorque incluso cuando  hago cualquier cosa, siempre estás ahí.",
+      "95. Tu forma de darme paz\nPorque contigo todo parece tener sentido.",
+      "96. Tu forma de hacerme sentir afortunado\nPorque a veces pienso que no merezco tanto.",
+      "97. Tu forma de entenderme\nPorque sin explicaciones, sabes lo que me pasa.",
+      "98. Tu forma de esperarme\nPorque no todos tienen esa paciencia, y tú sí.",
+      "99. Lo competitiva\nNo voy a negar que SIIII hubo algunas veces que empezaste a picantearla y bueno si me provocabas pero me aguantaba, apretaba los dientes cuando lo hacías",
+      "100. Que no pares de hablar\nEstá la coloco de última porque bueno es una de las cosas que note desde el comienzo, me di cuenta que cuando vos me cuentas algo pues parecía que no me importara porque me quedo callado pero simplemente me deleito de todo lo que dices,",
+    "quiero agradecerte por todoooo este tiempo que pasamos juntos, disponer gran parte de tu tiempo para estar conmigo, que bueno valoro mucho eso de tu parte, cada experiencia a tu lado es única y especique, gracias por aguantarme todo, es muy bonito de tu parte y me gusta porque me hace sentir que soy especial (suena como una despedida y no, no lo es).",
+    "Otra cosa pedirte perdón por no darte flores amarillas ese día, no es escusa pero es una razón muy tonta y es que no sabía la verdad cuando se daban las flores me olvidé, obvio sé que querías que te las dé, porque me lo dijiste yo ya me acorde de eso justo cuando me lo dijiste, perdón enserio, justo después de que me lo dijiste me salieron varios videos de como les regalaban flores amarillas y nooooo me quería matar aunque no se notara. En ese momento entendí que antes no entendía porque se regalaban flores, eso fue hasta que te conocí y me dieron ganas de darte flores porque sé que la recompensa será verte feliz.",
+    "Cambiando de tema\nSé que no hemos estado hablando mucho en estás semanas y bueno estamos distantes, la verdad si me pone triste, porque ya te lo dije extraño pasar tiempo contigo y bueno parte de mi pues siente que es mi culpa, aquella noche dijiste que querías estar sola contigo misma y fue una de las razones por las que me quede callado, estuve así y me dormí, pensé en darte tu espacio porque bueno pasabas mucho tiempo conmigo y no sé solo quería descansar y despejar tu mente.",
+    "Ahí fue cuando dije evitaré molestarla y cuando se sienta mejor la sorprenderé con el detalle que tengo pensado hacer que bueno es este que hice, ahí fue mi error no debí dejarte sola todo este tiempo lo siento de verdad, fue muy mal de mi parte hacer eso cuando simplemente debí acompañarte, escucharte si querias hablar de algo.o que hagamos lo que quieras.",
+    "Otras de las razones por la que me puse mal es por esa vez que te deje sola en la partida, mmm en ese momento mi mente me dice que te dije algo feo o te hice sentir con algo que dije mientras estaba dormido, bueno porque no recuerdo nada solo desperté cuando acabo la partida y te fuiste de discord, de nuevo perdón por dormirme siempre.",
+    "Algo o una de las razones que me dí cuenta mientras sobrepensaba fue que tu eres mi lugar seguro, te escucho y me alegras el día, paso el tiempo contigo y me siento tranquilo y en paz, jugamos y divierto siempre, pienso en ti y siento que estoy en casa y todo lo demás deja de importar y sonará muy tonto pero esa es una de las razones por las cuales me duermo cuando estoy contigo, ya que yo mismo sé que no es por cansancio ya que si fuese así te lo diría obviamente como algunas veces que te lo dije.",
+    "Cuando empecé a sentir cosas por ti mi mente repetía la misma pregunta -¿Yo soy el hombre que ella quiere?, y era porque bueno solo mírate era una chica maravillosa, inteligente, preciosa, única, inigualable, encantadora, tierna…… y dioss eres perfecta, y yo no entendía que veías tu en mi, ns un chico raro, antisocial, con muchos defectos, tonto y otras cosas más, pero eso fue cambiando cada vez que lo que sentía por ti iba creciendo y ya no pensaba en eso.",
+    "Y se que soy un cretino algunas veces, eres la única persona en mi vida por la cual haría lo que sea por verte y hacerte feliz, además de mi familia, que no se impresiona por todo lo demás, y me conoces con errores y virtudes y no te importa eso creo. Ariiiii no sabes lo mucho que te extraño y las ganas que me dan de escuchar tu voz ahora mismo, quiero darte la mejor versión de mi quiero ser mejor para ti y quiero darte todo de mi, sé todo se muestra con acciones y no solo con palabras, bueno es algo que me representa o que siempre demostré que son las acciones y si lo haré.",
+    "Espero te haya gustado esto que hice, lo hice con mucho amor para ti tontita, espero que te encuentres bien y que llegues hasta aquí y no te aburras a medio camino. \nDe:\nLeotonto\nPara:\nAri<3",
+    
+    ];
+
+    const paginasSinDecoracion = [
+      "3 cosas que me gustan de ti ♥️",
+      "1. Tus ojos",
+      "2. Tu voz",
+      "JAJAJAJA, enserio crees que solo dire 3?",
+          "quiero agradecerte por todoooo este tiempo que pasamos juntos, disponer gran parte de tu tiempo para estar conmigo, que bueno valoro mucho eso de tu parte, cada experiencia a tu lado es única y especique, gracias por aguantarme todo, es muy bonito de tu parte y me gusta porque me hace sentir que soy especial (suena como una despedida y no, no lo es).",
+    "Otra cosa pedirte perdón por no darte flores amarillas ese día, no es escusa pero es una razón muy tonta y es que no sabía la verdad cuando se daban las flores me olvidé, obvio sé que querías que te las dé, porque me lo dijiste yo ya me acorde de eso justo cuando me lo dijiste, perdón enserio, justo después de que me lo dijiste me salieron varios videos de como les regalaban flores amarillas y nooooo me quería matar aunque no se notara. En ese momento entendí que antes no entendía porque se regalaban flores, eso fue hasta que te conocí y me dieron ganas de darte flores porque sé que la recompensa será verte feliz.",
+    "Cambiando de tema\nSé que no hemos estado hablando mucho en estás semanas y bueno estamos distantes, la verdad si me pone triste, porque ya te lo dije extraño pasar tiempo contigo y bueno parte de mi pues siente que es mi culpa, aquella noche dijiste que querías estar sola contigo misma y fue una de las razones por las que me quede callado, estuve así y me dormí, pensé en darte tu espacio porque bueno pasabas mucho tiempo conmigo y no sé solo quería descansar y despejar tu mente.",
+    "Ahí fue cuando dije evitaré molestarla y cuando se sienta mejor la sorprenderé con el detalle que tengo pensado hacer que bueno es este que hice, ahí fue mi error no debí dejarte sola todo este tiempo lo siento de verdad, fue muy mal de mi parte hacer eso cuando simplemente debí acompañarte, escucharte si querias hablar de algo.o que hagamos lo que quieras.",
+    "Otras de las razones por la que me puse mal es por esa vez que te deje sola en la partida, mmm en ese momento mi mente me dice que te dije algo feo o te hice sentir con algo que dije mientras estaba dormido, bueno porque no recuerdo nada solo desperté cuando acabo la partida y te fuiste de discord, de nuevo perdón por dormirme siempre.",
+    "Algo o una de las razones que me dí cuenta mientras sobrepensaba fue que tu eres mi lugar seguro, te escucho y me alegras el día, paso el tiempo contigo y me siento tranquilo y en paz, jugamos y divierto siempre, pienso en ti y siento que estoy en casa y todo lo demás deja de importar y sonará muy tonto pero esa es una de las razones por las cuales me duermo cuando estoy contigo, ya que yo mismo sé que no es por cansancio ya que si fuese así te lo diría obviamente como algunas veces que te lo dije.",
+    "Cuando empecé a sentir cosas por ti mi mente repetía la misma pregunta -¿Yo soy el hombre que ella quiere?, y era porque bueno solo mírate era una chica maravillosa, inteligente, preciosa, única, inigualable, encantadora, tierna…… y dioss eres perfecta, y yo no entendía que veías tu en mi, ns un chico raro, antisocial, con muchos defectos, tonto y otras cosas más, pero eso fue cambiando cada vez que lo que sentía por ti iba creciendo y ya no pensaba en eso.",
+    "Y se que soy un cretino algunas veces, eres la única persona en mi vida por la cual haría lo que sea por verte y hacerte feliz, además de mi familia, que no se impresiona por todo lo demás, y me conoces con errores y virtudes y no te importa eso creo. Ariiiii no sabes lo mucho que te extraño y las ganas que me dan de escuchar tu voz ahora mismo, quiero darte la mejor versión de mi quiero ser mejor para ti y quiero darte todo de mi, sé todo se muestra con acciones y no solo con palabras, bueno es algo que me representa o que siempre demostré que son las acciones y si lo haré.",
+    "Espero te haya gustado esto que hice, lo hice con mucho amor para ti tontita, espero que te encuentres bien y que llegues hasta aquí y no te aburras a medio camino",
+    ];
+
+    let paginaActual = 0;
+    const totalFotos = 30;
+    let player; 
+
+    function limpiarDecoraciones() {
+      document.querySelectorAll('.decor-img').forEach(el => el.remove());
+    }
+
+    function generarDecoracionesDentro(pageEl) {
+      const esquinas = ["top-left", "top-right", "bottom-left", "bottom-right"];
+      limpiarDecoraciones();
+
+      esquinas.forEach(pos => {
+        const img = document.createElement("img");
+        const num = Math.floor(Math.random() * totalFotos) + 1;
+        img.src = `imagenes/x${num}.jpeg`;
+        img.className = `decor-img ${pos}`;
+        pageEl.appendChild(img);
+      });
+    }
+
+    function renderPage(index) {
+      const pageContainer = document.getElementById('page-container');
+      pageContainer.innerHTML = '';
+
+      const pageEl = document.createElement('div');
+      pageEl.className = 'page';
+      const text = paginas[index] || '';
+
+      if (text === "100 Cosas Que Me Gustan de Ti") {
+        const h1 = document.createElement('h1');
+        h1.className = 'titulo';
+        h1.textContent = text;
+        pageEl.appendChild(h1);
+
+        const names = document.createElement('div');
+        names.className = 'nombres';
+        names.innerHTML = `<span>Ariana</span><span class="corazon">❤</span><span>Leonardo</span>`;
+        pageEl.appendChild(names);
+      } else {
+        let parts = text.split('\n');
+        if (parts[0].match(/^\d+\.\s/)) {
+          const sub = document.createElement('div');
+          sub.className = 'subtitulo';
+          sub.textContent = parts[0];
+          pageEl.appendChild(sub);
+
+          const p = document.createElement('div');
+          p.className = 'texto';
+          p.textContent = parts.slice(1).join('\n');
+          pageEl.appendChild(p);
+        } else {
+          const p = document.createElement('div');
+          p.className = 'texto';
+          p.textContent = text;
+          pageEl.appendChild(p);
+        }
+      }
+
+      pageContainer.appendChild(pageEl);
+
+      let shouldDecorate = false;
+      if (!paginasSinDecoracion.includes(text)) {
+        if (text === "100 Cosas Que Me Gustan de Ti") {
+          shouldDecorate = true;
+        } else {
+          const m = text.match(/^\s*(\d+)\./);
+          if (m) {
+            const n = parseInt(m[1], 10);
+            if (n >= 1 && n <= 100) shouldDecorate = true;
+          }
+        }
+      }
+
+      if (shouldDecorate) generarDecoracionesDentro(pageEl);
+    }
+
+    function verificarPassword() {
+      const pass = document.getElementById('password').value;
+      if (pass === 'Arle') {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('diario').style.display = 'flex';
+        paginaActual = 0;
+        renderPage(paginaActual);
+        if (!player) {
+          player = document.getElementById('player');
+          player.play().catch(()=>{});
+        }
+      } else {
+        alert('Contraseña incorrecta, intenta de nuevo.');
+      }
+    }
+
+    function siguientePagina() {
+      if (paginaActual < paginas.length - 1) {
+        paginaActual++;
+        renderPage(paginaActual);
+      }
+    }
+
+    function anteriorPagina() {
+      if (paginaActual > 0) {
+        paginaActual--;
+        renderPage(paginaActual);
+      }
+    }
+  </script>
+</body>
+</html>
